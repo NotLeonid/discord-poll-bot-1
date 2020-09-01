@@ -25,7 +25,7 @@ message.channel.send(`||<@${message.author.id}>||`,[embed]);
 const member = message.guild.members.cache.get(message.author.id);
 if (member.roles.cache.some(role=>role.name==='Poll maker')) {
 let role=message.guild.roles.cache.find(x=>x.name==="Poll ping");
-if(!role){var ping="";}else{var ping=role;}
+if(!role){var ping="";}else{var ping=`||${role}||`;}
 var embed=new Discord.MessageEmbed()
 .setColor("#006aff")
 .setTitle("**Poll**")
