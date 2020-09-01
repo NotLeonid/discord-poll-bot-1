@@ -84,15 +84,15 @@ message.channel.bulkDelete(1);
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }
 
-if(command.startsWith("pin")) {
+if(command.startsWith("pin")===true) {
 let role=message.guild.roles.cache.find(x=>x.name==="Poll ping");
 if (role) {
 const member = message.guild.members.cache.get(message.author.id);
-if(member.roles.cache.some(role=>role.name==='Poll maker')){
-message.author.roles.remove(role);
+if(member.roles.cache.some(role=>role.name==='Poll ping')){
+member.roles.remove(role);
 message.reply("**you will not** receive pings of new polls. | :x:");
 }else{
-message.author.roles.add(role);
+member.roles.add(role);
 message.reply("**you will** receive pings of new polls. | :white_check_mark:");
 }
 }else{
