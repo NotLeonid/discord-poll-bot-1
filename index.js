@@ -46,7 +46,7 @@ message.react("3️⃣");
 message.react("4️⃣");
 }).catch(function(){});
 }else{
-message.channel.send(`||${message.author}||\r\n:white_check_mark: | Successfully sent a new poll in <#${channel}>\r\n:grey_question: | Question: **${args[0]}**\r\:person_pouting: | Author: **${message.author.tag}**`);
+message.channel.send(`||${message.author}||\r\n:white_check_mark: | Successfully sent a new poll in **${channel}**\r\n:grey_question: | Question: **${args[0]}**\r\:person_pouting: | Author: **${message.author.tag}**`);
 channel.send(ping,[embed])
 .then(function(message) {
 message.react("1️⃣");
@@ -70,6 +70,14 @@ var embed=new Discord.MessageEmbed()
 .setDescription("**"+message.author.tag+"**, you don't have permissions to send polls.\r\nYou can only send polls if you have the `Poll maker` role.");
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }}}}
+
+if(command.startsWith("inv")===true){
+var embed=new Discord.MessageEmbed()
+.setColor("#006aff")
+.setTitle(":envelope: | **Invite**")
+.setDescription(`**${message.author.tag}**, here's an invite link to invite this bot: **[Invite link](https://discord.com/oauth2/authorize?client_id=750306840876941343&permissions=8&scope=bot)**`);
+message.channel.send(`||<@${message.author.id}>||`,[embed]);
+}
 
 }
 });
