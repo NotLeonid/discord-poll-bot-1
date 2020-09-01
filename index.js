@@ -46,6 +46,7 @@ message.react("3️⃣");
 message.react("4️⃣");
 }).catch(function(){});
 }else{
+message.channel.send(`||${message.author}||\r\n:white_check_mark: | Successfully sent a new poll in <#${channel}>\r\n:grey_question: | Question: **${args[0]}**\r\:person_pouting: | Author: **${message.author.tag}**`);
 channel.send(ping,[embed])
 .then(function(message) {
 message.react("1️⃣");
