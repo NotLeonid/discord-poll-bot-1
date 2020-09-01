@@ -24,6 +24,8 @@ message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }else{
 const member = message.guild.members.cache.get(message.author.id);
 if (member.roles.cache.some(role=>role.name==='Poll maker')) {
+let role=message.guild.roles.cache.find(x=>x.name==="Poll ping");
+if(!role){var ping="";}else{var ping=role;}
 var embed=new Discord.MessageEmbed()
 .setColor("#006aff")
 .setTitle("**Poll**")
@@ -36,7 +38,7 @@ var embed=new Discord.MessageEmbed()
 );
 const channel=message.guild.channels.cache.find(channel=>channel.name==="polls")
 if(!channel){
-message.channel.send(embed)
+message.channel.send(ping,[embed])
 .then(function(message) {
 message.react("1️⃣");
 message.react("2️⃣");
@@ -44,7 +46,7 @@ message.react("3️⃣");
 message.react("4️⃣");
 }).catch(function(){});
 }else{
-channel.send(embed)
+channel.send(ping,[embed])
 .then(function(message) {
 message.react("1️⃣");
 message.react("2️⃣");
