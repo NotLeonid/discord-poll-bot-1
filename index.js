@@ -38,6 +38,7 @@ var embed=new Discord.MessageEmbed()
 );
 const channel=message.guild.channels.cache.find(channel=>channel.name==="polls")
 if(!channel){
+message.channel.bulkDelete(1);
 message.channel.send(ping,[embed])
 .then(function(message) {
 message.react("1️⃣");
@@ -46,6 +47,7 @@ message.react("3️⃣");
 message.react("4️⃣");
 }).catch(function(){});
 }else{
+message.channel.bulkDelete(1);
 message.channel.send(`||${message.author}||\r\n:white_check_mark: | Successfully sent a new poll in **${channel}**\r\n:grey_question: | Question: **${args[0]}**\r\:person_pouting: | Author: **${message.author.tag}**`);
 channel.send(ping,[embed])
 .then(function(message) {
@@ -62,12 +64,14 @@ var embed=new Discord.MessageEmbed()
 .setColor("#ba0000")
 .setTitle(":x: | **Poll**")
 .setDescription(`**${message.author.tag}**, the server should have a role names\r\n`+"`Poll maker`"+`\r\nElse, nobody can post polls.`);
+message.channel.bulkDelete(1);
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }else{
 var embed=new Discord.MessageEmbed()
 .setColor("#ba0000")
 .setTitle(":x: | **Poll**")
 .setDescription("**"+message.author.tag+"**, you don't have permissions to send polls.\r\nYou can only send polls if you have the `Poll maker` role.");
+message.channel.bulkDelete(1);
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }}}}
 
@@ -76,6 +80,7 @@ var embed=new Discord.MessageEmbed()
 .setColor("#006aff")
 .setTitle(":envelope: | **Invite**")
 .setDescription(`**${message.author.tag}**, here's an invite link to invite this bot: **[Invite link](https://discord.com/oauth2/authorize?client_id=750306840876941343&permissions=8&scope=bot)**`);
+message.channel.bulkDelete(1);
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }
 
