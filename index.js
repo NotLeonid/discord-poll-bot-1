@@ -148,9 +148,9 @@ message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }}}}
 
 if(command.toLowerCase().startsWith("fact")===true){
-    var fact = command.substring(6,command.length);
+    var fact = command.substring(5,command.length);
     var args = command.split(" ");
-    if(args[0]==null){
+    if(args[0]===null){
     var embed=new Discord.MessageEmbed()
     .setColor("#ba0000")
     .setTitle(":x: | **Fact**")
