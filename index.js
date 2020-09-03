@@ -180,15 +180,15 @@ if(command.toLowerCase().startsWith("fact")===true){
     if (!role) {
     var embed=new Discord.MessageEmbed()
     .setColor("#ba0000")
-    .setTitle(":x: | **Poll**")
-    .setDescription(`**${message.author.tag}**, the server should have a role called\r\n`+"`Fact maker`"+`\r\nElse, nobody can post polls.`);
+    .setTitle(":x: | **Fact**")
+    .setDescription(`**${message.author.tag}**, the server should have a role called\r\n`+"`Fact maker`"+`\r\nElse, nobody can post facts.`);
     message.channel.bulkDelete(1);
     message.channel.send(`||<@${message.author.id}>||`,[embed]);
     }else{
     var embed=new Discord.MessageEmbed()
     .setColor("#ba0000")
-    .setTitle(":x: | **Poll**")
-    .setDescription("**"+message.author.tag+"**, you don't have permissions to send polls.\r\nYou can only send polls if you have the `Fact maker` role.");
+    .setTitle(":x: | **Fact**")
+    .setDescription("**"+message.author.tag+"**, you don't have permissions to send new facts.\r\nYou can only send polls if you have the `Fact maker` role.");
     message.channel.bulkDelete(1);
     message.channel.send(`||<@${message.author.id}>||`,[embed]);
     }}}}
@@ -204,7 +204,7 @@ message.channel.send(`||<@${message.author.id}>||`,[embed]);
 
 const args = command.toLowerCase().split(" ");
 if(args[1].startsWith("po")===false&&args[1].startsWith("tr")===false&&args[1].startsWith("fa")===false){
-message.reply("please specify which ping setting would you like to toggle:\r\n- polls\r\n- trivias");
+message.reply("please specify which ping setting would you like to toggle:\r\n- polls\r\n- trivias\r\n- facts");
 }else{
 if (args[1].startsWith("po")===true) {
 let role=message.guild.roles.cache.find(x=>x.name==="Poll ping");
