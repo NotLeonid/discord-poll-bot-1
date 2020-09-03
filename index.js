@@ -47,7 +47,7 @@ var embed=new Discord.MessageEmbed()
 );
 const channel=message.guild.channels.cache.find(channel=>channel.name==="polls")
 if(!channel){
-message.channel.bulkDelete(1);
+message.delete();
 message.channel.send(ping,[embed])
 .then(function(message) {
 message.react("1️⃣");
@@ -56,7 +56,7 @@ message.react("3️⃣");
 message.react("4️⃣");
 }).catch(function(){});
 }else{
-message.channel.bulkDelete(1);
+message.delete();
 message.channel.send(`||${message.author}||\r\n:white_check_mark: | Successfully sent a new poll in **${channel}**\r\n:grey_question: | Question: **${args[0]}**\r\n:person_pouting: | Author: **${message.author.tag}**`);
 channel.send(ping,[embed])
 .then(function(message) {
@@ -73,14 +73,14 @@ var embed=new Discord.MessageEmbed()
 .setColor("#ba0000")
 .setTitle(":x: | **Poll**")
 .setDescription(`**${message.author.tag}**, the server should have a role called\r\n`+"`Poll maker`"+`\r\nElse, nobody can post polls.`);
-message.channel.bulkDelete(1);
+message.delete();
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }else{
 var embed=new Discord.MessageEmbed()
 .setColor("#ba0000")
 .setTitle(":x: | **Poll**")
 .setDescription("**"+message.author.tag+"**, you don't have permissions to send polls.\r\nYou can only send polls if you have the `Poll maker` role.");
-message.channel.bulkDelete(1);
+message.delete();
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }}}}
 
@@ -110,7 +110,7 @@ var embed=new Discord.MessageEmbed()
 );
 const channel=message.guild.channels.cache.find(channel=>channel.name==="trivias")
 if(!channel){
-message.channel.bulkDelete(1);
+message.delete();
 message.channel.send(ping,[embed])
 .then(function(message) {
 message.react("1️⃣");
@@ -119,7 +119,7 @@ message.react("3️⃣");
 message.react("4️⃣");
 }).catch(function(){});
 }else{
-message.channel.bulkDelete(1);
+message.delete();
 message.channel.send(`||${message.author}||\r\n:white_check_mark: | Successfully sent a new trivia quiz in **${channel}**\r\n:grey_question: | Question: **${args[0]}**\r\n:person_pouting: | Author: **${message.author.tag}**`);
 channel.send(ping,[embed])
 .then(function(message) {
@@ -136,20 +136,20 @@ var embed=new Discord.MessageEmbed()
 .setColor("#ba0000")
 .setTitle(":x: | **Trivia**")
 .setDescription(`**${message.author.tag}**, the server should have a role called\r\n`+"`Trivia maker`"+`\r\nElse, nobody can post new trivia quizzes.`);
-message.channel.bulkDelete(1);
+message.delete();
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }else{
 var embed=new Discord.MessageEmbed()
 .setColor("#ba0000")
 .setTitle(":x: | **Trivia**")
 .setDescription("**"+message.author.tag+"**, you don't have permissions to send new trivias.\r\nYou can only send trivias if you have the `Trivia maker` role.");
-message.channel.bulkDelete(1);
+message.delete();
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }}}}
 
 if(command.toLowerCase().startsWith("fact")===true){
-    const string=command.substring(5,command.length);
-    const args=string.split(",");
+    var fact = command.substring(6,command.length);
+    var args = command.split(" ");
     if(args[0]==null){
     var embed=new Discord.MessageEmbed()
     .setColor("#ba0000")
@@ -163,17 +163,17 @@ if(command.toLowerCase().startsWith("fact")===true){
     if(!role){var ping="";}else{var ping=`||${role}||`;}
     var embed=new Discord.MessageEmbed()
     .setColor("#006aff")
-    .setTitle(":bulb: | **Fact**")
+    .setTitle("**Fact**")
     .setDescription(`**${message.author}** have posted a fact!`)
-    .addFields({name:`:bulb: | Fact`,value:args[0]},)
+    .addFields({name:`:bulb: | Fact`,value:fact},)
     const channel=message.guild.channels.cache.find(channel=>channel.name==="facts")
     if(!channel){
-    message.channel.bulkDelete(1);
-    message.channel.send(ping,[embed]);
+    message.delete();
+    message.channel.send(ping,[embed]).then(function(message){message.react("✅");}).catch(function(){});
     }else{
-    message.channel.bulkDelete(1);
+    message.delete();
     message.channel.send(`||${message.author}||\r\n:white_check_mark: | Successfully sent a new fact in **${channel}**\r\n:person_pouting: | Author: **${message.author.tag}**`);
-    channel.send(ping,[embed]);
+    channel.send(ping,[embed]).then(function(message){message.react("✅");}).catch(function(){});
     }}else{
     let roleName="Fact maker";
     let role=message.guild.roles.cache.find(x=>x.name===roleName);
@@ -182,14 +182,14 @@ if(command.toLowerCase().startsWith("fact")===true){
     .setColor("#ba0000")
     .setTitle(":x: | **Fact**")
     .setDescription(`**${message.author.tag}**, the server should have a role called\r\n`+"`Fact maker`"+`\r\nElse, nobody can post facts.`);
-    message.channel.bulkDelete(1);
+    message.delete();
     message.channel.send(`||<@${message.author.id}>||`,[embed]);
     }else{
     var embed=new Discord.MessageEmbed()
     .setColor("#ba0000")
     .setTitle(":x: | **Fact**")
     .setDescription("**"+message.author.tag+"**, you don't have permissions to send new facts.\r\nYou can only send polls if you have the `Fact maker` role.");
-    message.channel.bulkDelete(1);
+    message.delete();
     message.channel.send(`||<@${message.author.id}>||`,[embed]);
     }}}}
 
@@ -198,10 +198,11 @@ var embed=new Discord.MessageEmbed()
 .setColor("#006aff")
 .setTitle(":envelope: | **Invite**")
 .setDescription(`**${message.author.tag}**, here's an invite link to invite this bot: **[Invite link](https://discord.com/oauth2/authorize?client_id=750306840876941343&permissions=8&scope=bot)**`);
-message.channel.bulkDelete(1);
+message.delete();
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }
 
+if(command.toLowerCase().startsWith("ping")===true){
 const args = command.toLowerCase().split(" ");
 if(args[1].startsWith("po")===false&&args[1].startsWith("tr")===false&&args[1].startsWith("fa")===false){
 message.reply("please specify which ping setting would you like to toggle:\r\n- polls\r\n- trivias\r\n- facts");
@@ -228,8 +229,7 @@ const member = message.guild.members.cache.get(message.author.id);
 if(member.roles.cache.some(x=>x.name==="Fact ping")){member.roles.remove(role);message.reply("**you will not** receive pings of new facts. | :x:");}
 else{member.roles.add(role);message.reply("**you will** receive pings of new facts. | :white_check_mark:");}
 }else{message.reply("the server should have the role named `Fact ping` to receive pings about new facts. | :x:");}
-}
-}}
+}}}}
 
 }});
 client.login(process.env.token);
