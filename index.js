@@ -150,7 +150,7 @@ message.channel.send(`||<@${message.author.id}>||`,[embed]);
 if(command.toLowerCase().startsWith("fact")===true){
     var fact = command.substring(5,command.length);
     var args = command.split(" ");
-    if(args[0]===null){
+    if(fact===""){
     var embed=new Discord.MessageEmbed()
     .setColor("#ba0000")
     .setTitle(":x: | **Fact**")
@@ -165,7 +165,7 @@ if(command.toLowerCase().startsWith("fact")===true){
     .setColor("#006aff")
     .setTitle("**Fact**")
     .setDescription(`**${message.author}** have posted a fact!`)
-    .addFields({name:`:bulb: | Fact`,value:fact},)
+    .addFields({name:`:bulb: | Fact`,value:`**__${fact}__**`},)
     const channel=message.guild.channels.cache.find(channel=>channel.name==="facts")
     if(!channel){
     message.delete();
