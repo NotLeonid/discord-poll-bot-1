@@ -204,7 +204,8 @@ message.channel.send(`||<@${message.author.id}>||`,[embed]);
 
 if(command.toLowerCase().startsWith("ping")===true){
 const args = command.toLowerCase().split(" ");
-if(args[1].startsWith("po")===false&&args[1].startsWith("tr")===false&&args[1].startsWith("fa")===false){
+var cmds=['po','tr','fa'];
+if(cmds.includes(args[1].substring(0,2))){
 message.reply("please specify which ping setting would you like to toggle:\r\n- polls\r\n- trivias\r\n- facts");
 }else{
 if (args[1].startsWith("po")===true) {
