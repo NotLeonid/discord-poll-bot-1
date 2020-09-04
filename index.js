@@ -205,7 +205,8 @@ message.channel.send(`||<@${message.author.id}>||`,[embed]);
 if(command.toLowerCase().startsWith("ping")===true){
 const args = command.toLowerCase().split(" ");
 var cmds=['po','tr','fa'];
-if(cmds.includes(args[1].substring(0,2))){
+if(args[1].length<2){message.reply("please specify which ping setting would you like to toggle:\r\n- polls\r\n- trivias\r\n- facts");}else{
+if(cmds.includes(args[1].substring(0,2))===false){
 message.reply("please specify which ping setting would you like to toggle:\r\n- polls\r\n- trivias\r\n- facts");
 }else{
 if (args[1].startsWith("po")===true) {
@@ -230,7 +231,7 @@ const member = message.guild.members.cache.get(message.author.id);
 if(member.roles.cache.some(x=>x.name==="Fact ping")){member.roles.remove(role);message.reply("**you will not** receive pings of new facts. | :x:");}
 else{member.roles.add(role);message.reply("**you will** receive pings of new facts. | :white_check_mark:");}
 }else{message.reply("the server should have the role named `Fact ping` to receive pings about new facts. | :x:");}
-}}}}
+}}}}}
 
 }});
 client.login(process.env.token);
