@@ -205,7 +205,7 @@ message.channel.send(`||<@${message.author.id}>||`,[embed]);
 if(command.toLowerCase().startsWith("ping")===true){
 const args = command.toLowerCase().split(" ");
 var cmds=['po','tr','fa'];
-if(args[1].length<2){message.reply("please specify which ping setting would you like to toggle:\r\n- polls\r\n- trivias\r\n- facts");}else{
+if(args[1].length<2||args[1]==null){message.reply("please specify which ping setting would you like to toggle:\r\n- polls\r\n- trivias\r\n- facts");}else{
 if(cmds.includes(args[1].substring(0,2))===false){
 message.reply("please specify which ping setting would you like to toggle:\r\n- polls\r\n- trivias\r\n- facts");
 }else{
