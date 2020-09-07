@@ -21,6 +21,16 @@ client.on("message",async message=>{
 if(message.author.bot===false&&message.content.startsWith(prefix)===true){
 const command=message.content.substring(prefix.length,message.content.length);
 
+if (command.startsWith("del")===true){
+var args = message.content.split(' ');
+message.channel.send(`||${message.author}||\r\n:x: | Please provide an amout in numbers`);
+}else{
+if (args[1]+1 < 100 && args[1] > 0){
+message.channel.bulkDelete(args[1]+1,true);
+}else{
+message.channel.send(`||${message.author}||\r\n:x: | Please provide an amout between 1 and 99`);
+}}}
+
 if(command.toLowerCase().startsWith("poll")===true){
 const string=command.substring(5,command.length);
 const args=string.split(",");
