@@ -208,9 +208,9 @@ var args=command.split(" ");
 if(args[1]){
 message.delete();
 var amount=parseInt(args[1]);
-if(amount>1&&amount<100){message.channel.bulkDelete(amount,true);}else{message.author.reply(`${args[1]} is not a valid amount. It should be a number between 1 and 99.`);}
+if(amount>1&&amount<100){message.channel.bulkDelete(amount,true);}else{message.reply(`${args[1]} is not a valid amount. It should be a number between 1 and 99.`);}
 }else{
-message.author.reply("Please select the amount of how much messages to delete, between 1 and 99.\r\nExample: "+prefix+"del 37");
+message.reply("Please select the amount of how much messages to delete, between 1 and 99.\r\nExample: "+prefix+"del 37");
 }
 }
 
