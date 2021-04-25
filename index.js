@@ -198,7 +198,7 @@ if(command.toLowerCase().startsWith("inv")===true){
 var embed=new Discord.MessageEmbed()
 .setColor("#006aff")
 .setTitle(":envelope: | **Invite**")
-.setDescription(`**${message.author.tag}**, here's an invite link to invite this bot: **[Invite link](https://discord.com/oauth2/authorize?client_id=750306840876941343&permissions=8&scope=bot)**`);
+.setDescription(`**${message.author.tag}**, here's an invite link to invite this bot: **[Invite link](https://discord.com/api/oauth2/authorize?client_id=760762347375034398&permissions=8&scope=bot)**`);
 message.channel.bulkDelete(1);
 message.channel.send(`||<@${message.author.id}>||`,[embed]);
 }
